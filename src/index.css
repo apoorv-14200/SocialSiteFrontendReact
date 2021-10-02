@@ -7,6 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.home {
+  width: 60%;
+  position: absolute;
+  left: 5%;
+}
 body {
   background-color: #f3f2ef;
 }
@@ -82,7 +87,7 @@ p.post-content {
 }
 
 .comments {
-  width: 92%;
+  width: 88%;
   position: relative;
   left: 50px;
 }
@@ -198,6 +203,10 @@ div.site-name {
   z-index: 1;
   position: absolute;
   width: 101%;
+  height: 100px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  visibility: hidden;
 }
 .result {
   width: 100%;
@@ -223,4 +232,50 @@ div.site-name {
   margin-left: 10px;
   height: 25px;
   width: 25px;
+}
+
+.nav-btn {
+  color: white;
+  text-decoration: none;
+  font-size: inherit;
+}
+
+.login-container {
+  width: 500px;
+  height: 300px;
+  margin: 50px auto 50px auto;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+  padding-bottom: 40px;
+}
+.login-heading {
+  width: 90%;
+  height: 20%;
+  color: orange;
+  font-size: xx-large;
+  font-family: sans-serif;
+  margin: 10px auto 10px auto;
+}
+.login-form {
+  width: 90%;
+  height: 80%;
+  margin: 10px auto 10px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.login-form input {
+  width: 100%;
+  height: 20%;
+}
+.submit-btn {
+  width: 100%;
+  height: 20%;
+  color: #f2f2f2;
+  font-size: large;
+  background-color: rgb(255, 102, 0);
 }
