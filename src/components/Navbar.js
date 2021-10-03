@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import SearchResult from './SearchResult';
-
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Navbar extends Component {
   render() {
+    const { isLoggedIn, user } = this.props.auth;
     return (
       <div className="navbar">
         <div className="nav-left-container">
@@ -27,26 +28,39 @@ class Navbar extends Component {
           <button className="search-btn">Search</button>
         </div>
         <div className="nav-right-container">
-          <div className="user-nav">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"
-              className="user-logo"
-            ></img>
-            <div className="username-nav">Apoorv</div>
-          </div>
-          <Link className="nav-btn" to="/login">
-            <div>LogIn</div>
-          </Link>
-          <Link className="nav-btn" to="/logout">
-            <div>LogOut</div>
-          </Link>
-          <Link className="nav-btn" to="Register">
-            <div>Register</div>
-          </Link>
+          {isLoggedIn && (
+            <div className="user-nav">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"
+                className="user-logo"
+              ></img>
+              <div className="username-nav">{user.user.name}</div>
+            </div>
+          )}
+          {isLoggedIn == false && (
+            <Link className="nav-btn" to="/login">
+              <div>LogIn</div>
+            </Link>
+          )}
+          {isLoggedIn && (
+            <Link className="nav-btn" to="/logout">
+              <div>LogOut</div>
+            </Link>
+          )}
+          {isLoggedIn == false && (
+            <Link className="nav-btn" to="Register">
+              <div>Register</div>
+            </Link>
+          )}
         </div>
       </div>
     );
   }
 }
 
-export default Navbar;
+function mapToState(state) {
+  return {
+    auth: state.auth,
+  };
+}
+export default connect(mapToState)(Navbar);

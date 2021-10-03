@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import Home from './Home';
 import Page404 from './Page404';
 import Login from './Login';
+import SignUp from './SignUp';
 
 const login = () => <div>Login</div>;
 const logout = () => <div>logout</div>;
@@ -30,8 +31,9 @@ class App extends Component {
                 return <Home {...props} posts={posts} />;
               }}
             />
-            <Route path="/login" component={Login} />
-            <Route path="/logout" component={logout} />
+            <Route path="/login" exact component={Login} />
+            <Route path="/Register" exact component={SignUp} />
+            <Route path="/logout" exact component={logout} />
             <Route component={Page404} />
           </Switch>
         </div>

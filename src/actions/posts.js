@@ -1,5 +1,7 @@
 import { UPDATE_POSTS } from './actionTypes';
-const url = '/api/posts?page=1&limit=5';
+import URL from '../helper/urls';
+
+const url = URL.fetchposts();
 
 export function fetchposts() {
   return (dispatch) => {

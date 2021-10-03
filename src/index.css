@@ -241,27 +241,51 @@ div.site-name {
 }
 
 .login-container {
-  width: 500px;
-  height: 300px;
+  width: 400px;
+  height: auto;
   margin: 50px auto 50px auto;
   background-color: white;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
   padding: 10px;
-  padding-bottom: 40px;
 }
 .login-heading {
   width: 90%;
-  height: 20%;
+  height: 40px;
+  text-align: center;
   color: orange;
   font-size: xx-large;
   font-family: sans-serif;
   margin: 10px auto 10px auto;
 }
+.alert-dialog {
+  width: 90%;
+  height: auto;
+  background-color: #f1a6a0;
+  color: rgb(0, 0, 0);
+  font-size: large;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0px auto 0px auto;
+  transition: 0.5s ease-in-out;
+}
+
+.success-dialog {
+  width: 90%;
+  height: 40px;
+  background-color: #a0f1ae;
+  color: rgb(0, 0, 0);
+  font-size: large;
+  text-align: center;
+  border-radius: 5px;
+  margin: 0px auto 0px auto;
+  transition: 0.5s ease-in-out;
+}
 .login-form {
   width: 90%;
-  height: 80%;
+  height: auto;
   margin: 10px auto 10px auto;
   display: flex;
   flex-direction: row;
@@ -270,12 +294,17 @@ div.site-name {
 }
 .login-form input {
   width: 100%;
-  height: 20%;
+  height: 40px;
+  margin: 5px;
 }
 .submit-btn {
   width: 100%;
-  height: 20%;
+  height: 40px;
   color: #f2f2f2;
   font-size: large;
   background-color: rgb(255, 102, 0);
+}
+
+.submit-btn:disabled {
+  cursor: not-allowed;
 }
