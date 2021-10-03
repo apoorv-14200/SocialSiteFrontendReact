@@ -1,4 +1,11 @@
-import { LOGIN_FAILED, LOGIN_START, LOGIN_SUCCESS } from './actionTypes';
+import {
+  LOGIN_FAILED,
+  LOGIN_START,
+  LOGIN_SUCCESS,
+  AUTHENTICATE_USER,
+  LOG_OUT,
+  CLEAR_AUTH_STATE,
+} from './actionTypes';
 import URL from '../helper/urls';
 
 const url = URL.login();
@@ -27,13 +34,14 @@ export function authorizeuser(data) {
       .then((data) => {
         console.log(data);
         if (data.success) {
+          localStorage.setItem('token', data.data.token);
           setTimeout(() => {
-            dispatch(login_success(data.data));
-          }, 2000);
+            dispatch(login_success(data.data.user));
+          }, 1000);
         } else {
           setTimeout(() => {
             dispatch(login_failed(data.error));
-          }, 2000);
+          }, 1000);
         }
       })
       .catch((err) => console.log('error', err));
@@ -58,5 +66,23 @@ export function login_failed(error) {
   return {
     type: LOGIN_FAILED,
     error: error,
+  };
+}
+
+export function AuthenticateUser(user) {
+  return {
+    type: AUTHENTICATE_USER,
+    user: user,
+  };
+}
+
+export function logout() {
+  return {
+    type: LOG_OUT,
+  };
+}
+export function clearauthstate() {
+  return {
+    type: CLEAR_AUTH_STATE,
   };
 }

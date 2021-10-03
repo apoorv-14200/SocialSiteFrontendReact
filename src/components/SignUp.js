@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { authorizeuser } from '../actions/auth';
+import { Redirect } from 'react-router';
+import { authorizeuser, clearauthstate } from '../actions/auth';
 import { createuser } from '../actions/Sign_up_auth';
 
 class SignUp extends Component {
@@ -46,8 +47,14 @@ class SignUp extends Component {
     console.log(this.state);
     this.props.dispatch(createuser(this.state));
   };
+  componentWillUnmount() {
+    this.props.dispatch(clearauthstate());
+  }
   render() {
     const { error, inProgress, user, isLoggedIn } = this.props.auth;
+    if (isLoggedIn) {
+      return <Redirect to="/" />;
+    }
     console.log(this.props.auth);
     return (
       <div className="login-container">

@@ -30,12 +30,13 @@ export function createuser(data) {
         console.log(data);
         if (data.success) {
           setTimeout(() => {
-            dispatch(signup_success(data.data));
-          }, 2000);
+            localStorage.setItem('token', data.data.token);
+            dispatch(signup_success(data.data.user));
+          }, 1000);
         } else {
           setTimeout(() => {
             dispatch(signup_failed(data.error));
-          }, 2000);
+          }, 1000);
         }
       })
       .catch((err) => console.log('error', err));

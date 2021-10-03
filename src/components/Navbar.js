@@ -3,7 +3,13 @@ import SearchResult from './SearchResult';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import { logout } from '../actions/auth';
+
 class Navbar extends Component {
+  logOut = () => {
+    localStorage.removeItem('token');
+    this.props.dispatch(logout());
+  };
   render() {
     const { isLoggedIn, user } = this.props.auth;
     return (
@@ -34,7 +40,7 @@ class Navbar extends Component {
                 src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"
                 className="user-logo"
               ></img>
-              <div className="username-nav">{user.user.name}</div>
+              <div className="username-nav">{user.name}</div>
             </div>
           )}
           {isLoggedIn == false && (
@@ -42,11 +48,7 @@ class Navbar extends Component {
               <div>LogIn</div>
             </Link>
           )}
-          {isLoggedIn && (
-            <Link className="nav-btn" to="/logout">
-              <div>LogOut</div>
-            </Link>
-          )}
+          {isLoggedIn && <button onClick={this.logOut}>LogOut</button>}
           {isLoggedIn == false && (
             <Link className="nav-btn" to="Register">
               <div>Register</div>
