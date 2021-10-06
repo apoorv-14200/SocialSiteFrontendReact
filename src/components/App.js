@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import posts from '../reducers/posts';
 import { fetchposts } from '../actions/posts';
-import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Link,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import PostsList from './PostsList';
 import Navbar from './Navbar';
 import Home from './Home';
@@ -11,11 +17,34 @@ import Login from './Login';
 import SignUp from './SignUp';
 import jwt_decode from 'jwt-decode';
 import { AuthenticateUser, logout } from '../actions/auth';
+import Settings from './Settings';
+import Profile from './Profile';
 
+const PrivateRoute = (PrivateRouteProps) => {
+  const { isLoggedIn, path, component: Component } = PrivateRouteProps;
+  return (
+    <Route
+      path={path}
+      render={(props) => {
+        console.log('Props', props);
+        return isLoggedIn == true ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/login',
+              state: {
+                from: props.location,
+              },
+            }}
+          />
+        );
+      }}
+    />
+  );
+};
 class App extends Component {
   componentDidMount() {
-    console.log('hello props', this.props);
-    this.props.dispatch(fetchposts());
     const token = localStorage.getItem('token');
     if (token) {
       const user = jwt_decode(token);
@@ -23,7 +52,8 @@ class App extends Component {
     }
   }
   render() {
-    const { posts } = this.props;
+    const { posts, auth } = this.props;
+    console.log('loggedin', auth.isLoggedIn);
     return (
       <Router>
         <div>
@@ -33,11 +63,23 @@ class App extends Component {
               exact={true}
               path="/"
               render={(props) => {
-                return <Home {...props} posts={posts} />;
+                return <Home {...props} />;
               }}
             />
             <Route path="/login" exact component={Login} />
             <Route path="/Register" exact component={SignUp} />
+            <PrivateRoute
+              path="/settings"
+              exact
+              component={Settings}
+              isLoggedIn={auth.isLoggedIn}
+            />
+            <PrivateRoute
+              path="/user/:userId"
+              exact
+              component={Profile}
+              isLoggedIn={auth.isLoggedIn}
+            />
             <Route component={Page404} />
           </Switch>
         </div>
@@ -50,6 +92,7 @@ class App extends Component {
 function maptostate(state) {
   return {
     posts: state.posts,
+    auth: state.auth,
   };
 }
 // the below function basically provides the store context value available as props

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { logout } from '../actions/auth';
 
+import Search from './Search';
 class Navbar extends Component {
   logOut = () => {
     localStorage.removeItem('token');
@@ -24,22 +25,17 @@ class Navbar extends Component {
           <div className="site-name">Socializer</div>
         </div>
         <div className="nav-middle-container">
-          <div className="search">
-            <input placeholder="Search name"></input>
-            <div className="search-results">
-              <SearchResult />
-              <SearchResult />
-            </div>
-          </div>
-          <button className="search-btn">Search</button>
+          <Search />
         </div>
         <div className="nav-right-container">
           {isLoggedIn && (
             <div className="user-nav">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"
-                className="user-logo"
-              ></img>
+              <Link to="/settings">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"
+                  className="user-logo"
+                ></img>
+              </Link>
               <div className="username-nav">{user.name}</div>
             </div>
           )}

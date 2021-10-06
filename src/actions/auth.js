@@ -5,6 +5,8 @@ import {
   AUTHENTICATE_USER,
   LOG_OUT,
   CLEAR_AUTH_STATE,
+  EDIT_PROFILE_SUCCESS,
+  EDIT_PROFILE_FAILED,
 } from './actionTypes';
 import URL from '../helper/urls';
 

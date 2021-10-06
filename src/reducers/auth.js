@@ -8,12 +8,15 @@ import {
   AUTHENTICATE_USER,
   LOG_OUT,
   CLEAR_AUTH_STATE,
+  EDIT_PROFILE_FAILED,
+  EDIT_PROFILE_SUCCESS,
 } from '../actions/actionTypes';
 const initialAuthState = {
   user: {},
   error: null,
   isLoggedIn: false,
   inProgress: false,
+  profile: '',
 };
 
 export default function auth(state = initialAuthState, action) {
@@ -83,6 +86,24 @@ export default function auth(state = initialAuthState, action) {
       return {
         ...state,
         error: null,
+        editmode: false,
+      };
+    }
+    case EDIT_PROFILE_FAILED: {
+      return {
+        ...state,
+        inProgress: false,
+        error: action.error,
+      };
+    }
+    case EDIT_PROFILE_SUCCESS: {
+      return {
+        ...state,
+        isLoggedIn: true,
+        inProgress: false,
+        error: false,
+        user: action.user,
+        editmode: false,
       };
     }
     default: {

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Comment extends Component {
   render() {
@@ -16,4 +17,10 @@ class Comment extends Component {
   }
 }
 
-export default Comment;
+function mapToState(state) {
+  return {
+    auth: state.auth,
+    posts: state.posts,
+  };
+}
+export default connect(mapToState)(Comment);
