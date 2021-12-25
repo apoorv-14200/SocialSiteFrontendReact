@@ -33,7 +33,7 @@ const PrivateRoute = (PrivateRouteProps) => {
         ) : (
           <Redirect
             to={{
-              pathname: '/login',
+              pathname: '/SocialSiteFrontendReact/login',
               state: {
                 from: props.location,
               },
@@ -62,21 +62,29 @@ class App extends Component {
           <Switch>
             <Route
               exact={true}
-              path="/"
+              path="/SocialSiteFrontendReact"
               render={(props) => {
                 return <Home {...props} />;
               }}
             />
-            <Route path="/login" exact component={Login} />
-            <Route path="/Register" exact component={SignUp} />
+            <Route
+              path="/SocialSiteFrontendReact/login"
+              exact
+              component={Login}
+            />
+            <Route
+              path="/SocialSiteFrontendReact/Register"
+              exact
+              component={SignUp}
+            />
             <PrivateRoute
-              path="/settings"
+              path="/SocialSiteFrontendReact/settings"
               exact
               component={Settings}
               isLoggedIn={auth.isLoggedIn}
             />
             <PrivateRoute
-              path="/user/:userId"
+              path="/SocialSiteFrontendReact/user/:userId"
               exact
               component={Profile}
               isLoggedIn={auth.isLoggedIn}

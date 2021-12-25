@@ -37,7 +37,9 @@ class Login extends Component {
   }
   render() {
     const { error, inProgress, user, isLoggedIn } = this.props.auth;
-    const { from } = this.props.location.state || { from: { pathname: '/' } };
+    const { from } = this.props.location.state || {
+      from: { pathname: '/SocialSiteFrontendReact/' },
+    };
     if (isLoggedIn) {
       return <Redirect to={from} />;
     }
