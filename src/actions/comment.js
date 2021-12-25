@@ -1,5 +1,6 @@
 import { ADD_COMMENT_FAILED, ADD_COMMENT_SUCCESS } from './actionTypes';
 import URL from '../helper/urls';
+import { logout } from './auth';
 
 export function createComment(content, id) {
   const url = URL.createComment();
@@ -21,6 +22,9 @@ export function createComment(content, id) {
       },
     })
       .then((response) => {
+        if (response.status == '401') {
+          dispatch(logout());
+        }
         return response.json();
       })
       .then((data) => {

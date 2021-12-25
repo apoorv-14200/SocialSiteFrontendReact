@@ -1,5 +1,6 @@
 import { FETCH_SEARCH_USERS, CLEAR_SERACH } from './actionTypes';
 import URL from '../helper/urls';
+import { logout } from './auth';
 
 export function SearchUsers(text) {
   const url = URL.SearchUsers(text);
@@ -13,6 +14,9 @@ export function SearchUsers(text) {
       },
     })
       .then((response) => {
+        if (response.status == '401') {
+          dispatch(logout());
+        }
         return response.json();
       })
       .then((data) => {

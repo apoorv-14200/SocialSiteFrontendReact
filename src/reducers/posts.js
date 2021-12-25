@@ -9,6 +9,8 @@ import {
 } from '../actions/actionTypes';
 const initialPostsState = {
   posts: [],
+  next: null,
+  prev: null,
   error: null,
 };
 export default function posts(state = initialPostsState, action) {
@@ -17,6 +19,8 @@ export default function posts(state = initialPostsState, action) {
       return {
         ...state,
         posts: action.posts,
+        next: action.next,
+        prev: action.prev,
         error: null,
       };
     }

@@ -1,4 +1,4 @@
-const ROOT_URL = 'http://localhost:4000/api';
+const ROOT_URL = 'https://powerful-hamlet-85569.herokuapp.com/api';
 
 const URLS = {
   fetchposts: (page = 1, limit = 5) =>

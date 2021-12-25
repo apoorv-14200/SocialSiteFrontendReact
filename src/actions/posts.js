@@ -1,24 +1,35 @@
 import { ADD_POST_FAILED, ADD_POST_SUCCESS, UPDATE_POSTS } from './actionTypes';
 import URL from '../helper/urls';
+import { logout } from './auth';
 
-export function fetchposts() {
-  const url = URL.fetchposts();
+export function fetchposts(page = 1) {
+  const url = URL.fetchposts(page);
   return (dispatch) => {
     fetch(url)
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        dispatch(updatePosts(data.data.posts));
+        let next = data.next;
+        let prev = data.prev;
+        if (typeof next == 'undefined') {
+          next = null;
+        }
+        if (typeof prev == 'undefined') {
+          prev = null;
+        }
+        dispatch(updatePosts(data.data.posts, next, prev));
       })
       .catch((err) => console.log('error', err));
   };
 }
 
-export function updatePosts(posts) {
+export function updatePosts(posts, next, prev) {
   return {
     type: UPDATE_POSTS,
     posts: posts,
+    next: next,
+    prev: prev,
   };
 }
 
@@ -41,10 +52,12 @@ export function createPost(content) {
       },
     })
       .then((response) => {
+        if (response.status == '401') {
+          dispatch(logout());
+        }
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         if (data.success) {
           setTimeout(() => {
             dispatch(create_post_success(data.data.post));

@@ -4,6 +4,7 @@ import FriendList from './FriendList';
 import { connect } from 'react-redux';
 import PostsList from './PostsList';
 import { fetchposts } from '../actions/posts';
+import Footer from './Footer';
 
 class Home extends Component {
   render() {
@@ -13,6 +14,7 @@ class Home extends Component {
       <div className="home">
         <PostsList />
         {isLoggedIn && <FriendList />}
+        <Footer />
       </div>
     );
   }

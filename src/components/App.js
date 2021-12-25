@@ -19,6 +19,7 @@ import jwt_decode from 'jwt-decode';
 import { AuthenticateUser, logout } from '../actions/auth';
 import Settings from './Settings';
 import Profile from './Profile';
+import Footer from './Footer';
 
 const PrivateRoute = (PrivateRouteProps) => {
   const { isLoggedIn, path, component: Component } = PrivateRouteProps;

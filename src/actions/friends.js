@@ -12,6 +12,7 @@ import {
   CLEAR_FRIEND_STATE,
 } from './actionTypes';
 import URL from '../helper/urls';
+import { logout } from './auth';
 
 export function fetchFriends() {
   return (dispatch) => {
@@ -28,6 +29,9 @@ export function fetchFriends() {
       },
     })
       .then((response) => {
+        if (response.status == '401') {
+          dispatch(logout());
+        }
         return response.json();
       })
       .then((data) => {
@@ -80,6 +84,9 @@ export function AddFriend(id) {
       },
     })
       .then((response) => {
+        if (response.status == '401') {
+          dispatch(logout());
+        }
         return response.json();
       })
       .then((data) => {
@@ -138,6 +145,9 @@ export function RemoveFriend(id) {
       },
     })
       .then((response) => {
+        if (response.status == '401') {
+          dispatch(logout());
+        }
         return response.json();
       })
       .then((data) => {

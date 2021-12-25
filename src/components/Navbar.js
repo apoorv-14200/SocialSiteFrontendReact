@@ -18,7 +18,7 @@ class Navbar extends Component {
         <div className="nav-left-container">
           <Link to="/">
             <img
-              src="https://cdn-icons-png.flaticon.com/512/2065/2065203.png"
+              src="https://cdn-icons-png.flaticon.com/512/2111/2111421.png"
               className="logo"
             ></img>
           </Link>
@@ -44,7 +44,11 @@ class Navbar extends Component {
               <div>LogIn</div>
             </Link>
           )}
-          {isLoggedIn && <button onClick={this.logOut}>LogOut</button>}
+          {isLoggedIn && (
+            <button onClick={this.logOut} className="logout-btn">
+              LogOut
+            </button>
+          )}
           {isLoggedIn == false && (
             <Link className="nav-btn" to="Register">
               <div>Register</div>

@@ -4,6 +4,7 @@ import {
   USER_PROFILE_BEGIN,
 } from './actionTypes';
 import URL from '../helper/urls';
+import { logout } from './auth';
 
 export function fetchProfile(id) {
   return (dispatch) => {
@@ -20,6 +21,9 @@ export function fetchProfile(id) {
       },
     })
       .then((response) => {
+        if (response.status == '401') {
+          dispatch(logout());
+        }
         return response.json();
       })
       .then((data) => {

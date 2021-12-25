@@ -16,7 +16,9 @@ class CreatePost extends Component {
   };
   handleSubmit = () => {
     let content = this.state.post_content;
-    this.props.dispatch(createPost(content));
+    if (content.length != 0) {
+      this.props.dispatch(createPost(content));
+    }
   };
   render() {
     const { error } = this.props.posts;

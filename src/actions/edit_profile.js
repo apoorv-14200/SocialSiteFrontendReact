@@ -1,5 +1,6 @@
 import { EDIT_PROFILE_FAILED, EDIT_PROFILE_SUCCESS } from './actionTypes';
 import URL from '../helper/urls';
+import { logout } from './auth';
 
 const url = URL.editProfile();
 
@@ -25,6 +26,9 @@ export function edit_user_profile(name, password, confirmpassword, id) {
       },
     })
       .then((response) => {
+        if (response.status == '401') {
+          dispatch(logout());
+        }
         return response.json();
       })
       .then((data) => {
