@@ -16,7 +16,7 @@ class Navbar extends Component {
     return (
       <div className="navbar">
         <div className="nav-left-container">
-          <Link to="/">
+          <Link to="/SocialSiteFrontendReact/">
             <img
               src="https://cdn-icons-png.flaticon.com/512/2111/2111421.png"
               className="logo"
@@ -30,7 +30,7 @@ class Navbar extends Component {
         <div className="nav-right-container">
           {isLoggedIn && (
             <div className="user-nav">
-              <Link to="/settings">
+              <Link to="/SocialSiteFrontendReact/settings">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"
                   className="user-logo"
@@ -40,7 +40,7 @@ class Navbar extends Component {
             </div>
           )}
           {isLoggedIn == false && (
-            <Link className="nav-btn" to="/login">
+            <Link className="nav-btn" to="/SocialSiteFrontendReact/login">
               <div>LogIn</div>
             </Link>
           )}
@@ -50,7 +50,7 @@ class Navbar extends Component {
             </button>
           )}
           {isLoggedIn == false && (
-            <Link className="nav-btn" to="Register">
+            <Link className="nav-btn" to="/SocialSiteFrontendReact/Register">
               <div>Register</div>
             </Link>
           )}
