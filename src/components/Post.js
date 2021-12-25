@@ -49,7 +49,7 @@ class Post extends Component {
     return (
       <div className="Post">
         <div className="user-info">
-          <Link to={`/user/${post.user._id}`}>
+          <Link to={`/SocialSiteFrontendReact/user/${post.user._id}`}>
             <img
               src="https://cdn-icons-png.flaticon.com/512/560/560216.png"
               className="post-icon"

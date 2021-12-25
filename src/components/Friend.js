@@ -7,7 +7,7 @@ class Friend extends Component {
     return (
       <div className="friend">
         <div className="friend-icon">
-          <Link to={`/user/${friend._id}`}>
+          <Link to={`/SocialSiteFrontendReact/user/${friend._id}`}>
             <img src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"></img>
           </Link>
         </div>

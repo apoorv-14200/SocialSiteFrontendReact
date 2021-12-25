@@ -6,7 +6,7 @@ class SearchResult extends Component {
     const { result } = this.props;
     console.log('RESULT', result);
     return (
-      <Link to={`/user/${result._id}`}>
+      <Link to={`/SocialSiteFrontendReact/user/${result._id}`}>
         <div className="result">
           <img src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"></img>
           <div>{result.name}</div>

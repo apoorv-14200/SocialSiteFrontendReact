@@ -53,7 +53,7 @@ class SignUp extends Component {
   render() {
     const { error, inProgress, user, isLoggedIn } = this.props.auth;
     if (isLoggedIn) {
-      return <Redirect to="/" />;
+      return <Redirect to="/SocialSiteFrontendReact" />;
     }
     console.log(this.props.auth);
     return (
