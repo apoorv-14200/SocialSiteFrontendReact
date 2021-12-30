@@ -91,6 +91,7 @@ class App extends Component {
             />
             <Route component={Page404} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

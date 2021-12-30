@@ -14,11 +14,13 @@ class PostsList extends Component {
     const { isLoggedIn } = this.props.auth;
     console.log('PostList RENDERED');
     return (
-      <div className="Post-list">
+      <div className="post-list1">
         {isLoggedIn && <CreatePost />}
-        {posts.map((post) => (
-          <Post key={post._id} post={post} />
-        ))}
+        <div className="Post-list">
+          {posts.map((post) => (
+            <Post key={post._id} post={post} />
+          ))}
+        </div>
       </div>
     );
   }

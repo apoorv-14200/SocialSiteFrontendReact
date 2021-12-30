@@ -14,7 +14,6 @@ class Home extends Component {
       <div className="home">
         <PostsList />
         {isLoggedIn && <FriendList />}
-        <Footer />
       </div>
     );
   }
