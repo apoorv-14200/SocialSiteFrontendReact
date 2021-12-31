@@ -449,13 +449,14 @@ div.site-name {
 .friends-container {
   background-color: rgb(88, 130, 255);
   width: 25%;
-  height: fit-content;
+  height: 95%;
+  overflow: auto;
   margin-top: 20px;
   border-radius: 10px;
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-around; */
 }
 
 .friend {
@@ -465,7 +466,7 @@ div.site-name {
   border-radius: 20px;
   flex-direction: row;
   justify-content: space-around;
-  margin: 10px;
+  margin: 20px;
   background-color: white;
 }
 .friend-icon {
@@ -498,6 +499,7 @@ div.site-name {
   width: 100%;
   text-align: center;
   font-size: xx-large;
+  height: fit-content;
   color: rgb(255, 255, 255);
   font-weight: bolder;
 }
