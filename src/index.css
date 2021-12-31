@@ -7,6 +7,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::-webkit-scrollbar {
+  width: 20px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
 .home {
   width: 100%;
   position: absolute;
@@ -35,6 +49,14 @@ body {
   height: 75%;
   overflow: auto;
 }
+
+.Post-listN {
+  margin-top: 40px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
 .Post {
   height: auto;
   width: 90%;

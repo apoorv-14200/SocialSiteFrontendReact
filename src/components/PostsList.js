@@ -16,7 +16,7 @@ class PostsList extends Component {
     return (
       <div className="post-list1">
         {isLoggedIn && <CreatePost />}
-        <div className="Post-list">
+        <div className={isLoggedIn ? 'Post-list' : 'Post-listN'}>
           {posts.map((post) => (
             <Post key={post._id} post={post} />
           ))}
