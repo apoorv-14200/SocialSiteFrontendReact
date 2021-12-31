@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 
 import { connect } from 'react-redux';
 import { fetchProfile } from '../actions/profile';
+import { BoxesLoader } from 'react-awesome-loaders';
 import {
   AddFriend,
   clear_friend_state,
@@ -64,7 +65,16 @@ class Profile extends Component {
       return <Redirect to="/settings" />;
     }
     if (inProgress) {
-      return <h1>Loading!</h1>;
+      return (
+        <div className="ploader">
+          <BoxesLoader
+            boxColor={'#6366F1'}
+            style={{ marginBottom: '20px' }}
+            desktopSize={'128px'}
+            mobileSize={'80px'}
+          />
+        </div>
+      );
     }
     if (error) {
       return <h1>{error}</h1>;

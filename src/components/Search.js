@@ -6,6 +6,9 @@ import SearchResult from './SearchResult';
 class Search extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      focus: false,
+    };
   }
   handleChange = (e) => {
     let text = e.target.value;
@@ -15,13 +18,26 @@ class Search extends Component {
       this.props.dispatch(clearSearch());
     }
   };
+  handleInputFocus = () => {
+    this.setState({ focus: true });
+  };
+
+  handleInputBlur = () => {
+    this.setState({ focus: false });
+  };
   render() {
     const { results } = this.props.search;
     console.log('RESULTS', results);
+    const { focus } = this.state;
     return (
       <div className="search">
-        <input onChange={this.handleChange} placeholder="Search name"></input>
-        {results.length != 0 && (
+        <input
+          onChange={this.handleChange}
+          onFocus={this.handleInputFocus}
+          onBlur={this.handleInputBlur}
+          placeholder="Search name"
+        ></input>
+        {results.length != 0 && focus != false && (
           <div className="search-results">
             {results.map((result) => {
               return <SearchResult result={result} key={result._id} />;

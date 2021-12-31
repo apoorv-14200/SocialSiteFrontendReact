@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { logout } from '../actions/auth';
 
 import Search from './Search';
+
 class Navbar extends Component {
   logOut = () => {
     localStorage.removeItem('token');
@@ -13,6 +14,8 @@ class Navbar extends Component {
   };
   render() {
     const { isLoggedIn, user } = this.props.auth;
+    const url = window.location.href;
+    console.log(url);
     return (
       <div className="navbar">
         <div className="nav-left-container">
