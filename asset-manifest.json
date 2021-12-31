@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/SocialSiteFrontendReact/static/css/main.ced85772.chunk.css",
+    "main.css": "/SocialSiteFrontendReact/static/css/main.04f56760.chunk.css",
     "main.js": "/SocialSiteFrontendReact/static/js/main.4545d5e8.chunk.js",
     "main.js.map": "/SocialSiteFrontendReact/static/js/main.4545d5e8.chunk.js.map",
     "runtime-main.js": "/SocialSiteFrontendReact/static/js/runtime-main.964f5b9a.js",
@@ -8,13 +8,13 @@
     "static/js/2.4bc7ab89.chunk.js": "/SocialSiteFrontendReact/static/js/2.4bc7ab89.chunk.js",
     "static/js/2.4bc7ab89.chunk.js.map": "/SocialSiteFrontendReact/static/js/2.4bc7ab89.chunk.js.map",
     "index.html": "/SocialSiteFrontendReact/index.html",
-    "static/css/main.ced85772.chunk.css.map": "/SocialSiteFrontendReact/static/css/main.ced85772.chunk.css.map",
+    "static/css/main.04f56760.chunk.css.map": "/SocialSiteFrontendReact/static/css/main.04f56760.chunk.css.map",
     "static/js/2.4bc7ab89.chunk.js.LICENSE.txt": "/SocialSiteFrontendReact/static/js/2.4bc7ab89.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.964f5b9a.js",
     "static/js/2.4bc7ab89.chunk.js",
-    "static/css/main.ced85772.chunk.css",
+    "static/css/main.04f56760.chunk.css",
     "static/js/main.4545d5e8.chunk.js"
   ]
 }
