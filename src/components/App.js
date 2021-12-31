@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import posts from '../reducers/posts';
 import { fetchposts } from '../actions/posts';
+
 import {
   BrowserRouter as Router,
   Link,

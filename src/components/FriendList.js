@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import { clear_friend_state, fetchFriends } from '../actions/friends';
 import Friend from './Friend';
+import { WifiLoader } from 'react-awesome-loaders';
 
 class FriendList extends Component {
   constructor(props) {
@@ -18,7 +19,18 @@ class FriendList extends Component {
     const { friendships, inProgress, error } = this.props.friends;
     const signeduser = this.props.auth.user;
     if (inProgress) {
-      return <h1>Fetching User Friends!</h1>;
+      return (
+        <WifiLoader
+          className="loader"
+          background={'transparent'}
+          backColor={'rgb(66, 110, 240)'}
+          desktopSize={'90px'}
+          mobileSize={'90px'}
+          text={'Fetching Friends...'}
+          backColor="rgb(66, 110, 240)"
+          frontColor="#4645F6"
+        />
+      );
     }
     if (error) {
       return <h1>{error}</h1>;
