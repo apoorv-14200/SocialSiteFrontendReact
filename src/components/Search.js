@@ -22,25 +22,44 @@ class Search extends Component {
     this.setState({ focus: true });
   };
 
-  handleInputBlur = () => {
-    this.setState({ focus: false });
+  handleInputBlur = (e) => {
+    const par = document.getElementsByClassName('search');
+    if (par.length != 0) {
+      const isDescendant = par[0].contains(e.target);
+      console.log(isDescendant);
+      if (!isDescendant) {
+        this.setState({ focus: false });
+      }
+    }
   };
+  componentDidMount() {
+    window.addEventListener('click', (e) => {
+      this.handleInputBlur(e);
+    });
+  }
+  componentWillUnmount() {
+    window.removeEventListener('click', (e) => {
+      this.handleInputBlur(e);
+    });
+  }
+
   render() {
     const { results } = this.props.search;
     console.log('RESULTS', results);
     const { focus } = this.state;
     return (
-      <div className="search">
-        <input
-          onChange={this.handleChange}
-          onFocus={this.handleInputFocus}
-          onBlur={this.handleInputBlur}
-          placeholder="Search name"
-        ></input>
+      <div className="search" onFocus={this.handleInputFocus}>
+        <input onChange={this.handleChange} placeholder="Search name"></input>
         {results.length != 0 && focus != false && (
           <div className="search-results">
             {results.map((result) => {
-              return <SearchResult result={result} key={result._id} />;
+              return (
+                <SearchResult
+                  onFocus={this.handleInputFocus}
+                  result={result}
+                  key={result._id}
+                />
+              );
             })}
           </div>
         )}

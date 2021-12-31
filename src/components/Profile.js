@@ -62,7 +62,7 @@ class Profile extends Component {
     // console.log('PROFILE', this.props.location.aboutProps.post.user);
     const { error, inProgress } = this.props.profile;
     if (signeduser.email == profileuser.email) {
-      return <Redirect to="/settings" />;
+      return <Redirect to="/SocialSiteFrontendReact/settings" />;
     }
     if (inProgress) {
       return (
