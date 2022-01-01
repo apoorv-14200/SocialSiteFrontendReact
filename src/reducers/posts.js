@@ -86,6 +86,38 @@ export default function posts(state = initialPostsState, action) {
         };
       } else {
         //Logic ffor comments like
+        let newPosts = state.posts.map((post) => {
+          let newComments = post.comment.map((comment) => {
+            if (comment._id == action.id) {
+              if (action.deleted) {
+                let newLikes = comment.likes.filter(
+                  (like) => like._id != action.like._id
+                );
+                return {
+                  ...comment,
+                  likes: newLikes,
+                };
+              } else {
+                let newLikes = comment.likes;
+                newLikes.push(action.like);
+                return {
+                  ...comment,
+                  likes: newLikes,
+                };
+              }
+            }
+            return comment;
+          });
+          return {
+            ...post,
+            comment: newComments,
+          };
+        });
+
+        return {
+          ...state,
+          posts: newPosts,
+        };
       }
     }
     case TOGGLE_LIKE_FAILED: {
